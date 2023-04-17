@@ -37,7 +37,8 @@ def start_faas_server(port: int, n: int) -> None:
     logf.write(str(n) + ": " + str(startTime) + "\n")
     logf.close()
 
-    app.run(host='0.0.0.0',port=port)
+    from waitress import serve
+    serve(app, host='0.0.0.0', port=port)
 
 # copied from https://docs.python.org/3/library/socket.html#socket.socket.recvmsg
 def recv_fds(sock, msglen, maxfds):
