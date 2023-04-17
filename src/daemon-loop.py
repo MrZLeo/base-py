@@ -9,6 +9,7 @@ import tornado.web
 import tornado.httpserver
 import tornado.netutil
 from flask import Flask
+from waitress import serve
 
 file_sock_path = 'cfork/f.sk'
 file_sock = None
@@ -37,7 +38,6 @@ def start_faas_server(port: int, n: int) -> None:
     logf.write(str(n) + ": " + str(startTime) + "\n")
     logf.close()
 
-    from waitress import serve
     serve(app, host='0.0.0.0', port=port)
 
 # copied from https://docs.python.org/3/library/socket.html#socket.socket.recvmsg
