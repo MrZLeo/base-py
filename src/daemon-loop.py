@@ -24,10 +24,6 @@ app = Flask(__name__)
 # can be loaded from file as well
 @app.route('/')
 def hello_world():
-    startTime = int(round(time.time() * 1000))
-    logf = open("log.txt", "a")
-    logf.write("finish loading at: " + str(startTime) + "\n")
-    logf.close()
     return 'Hello python!\n'
 
 
